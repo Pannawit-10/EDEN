@@ -4,6 +4,9 @@ using System.Collections;
 
 public class TypewriterEffect : MonoBehaviour
 {
+    [Header("เชื่อมต่อฉากต่อไป")]
+    public AwakeningController awakeningScript;
+
     [Header("การตั้งค่าบทบรรยาย")]
     [TextArea(3, 5)]
     public string[] sentences;
@@ -126,6 +129,11 @@ public class TypewriterEffect : MonoBehaviour
         }
 
         transform.parent.gameObject.SetActive(false);
+        // สั่งให้สคริปต์ตื่นนอนเริ่มทำงาน!
+        if (awakeningScript != null)
+        {
+            awakeningScript.StartAwakeningSequence();
+        }
         Debug.Log("เริ่มเกม!");
     }
 }
